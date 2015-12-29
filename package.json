@@ -1,0 +1,11 @@
+{
+  "name": "wunderlist",
+  "version": "1.0.0",
+  "description": "demo nodejs with express",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "chuongvv",
+  "license": "ISC"
+}
