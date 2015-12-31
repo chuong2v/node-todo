@@ -26,7 +26,7 @@
         <div class="list-item" ng-repeat="list in lists">
           <a href="" ng-click="setCurrentList(list.name)">{[{list.name}]}</a>
           {{!-- <button>Edit</button> --}}
-          <button ng-click='delete(list)'>Delete</button>
+          <button ng-if="list.name!='Inbox'" ng-click='delete(list)'>Delete</button>
         </div>      
       </div>
       <!-- Modal -->
