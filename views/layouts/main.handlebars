@@ -2,14 +2,13 @@
 <html ng-app='app'>
 <head>
   <title>Todos list</title>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="public/css/app.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>  
+  <script src="/node_modules/angular/angular.min.js"></script>
 
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="public/js/app.js"></script>
   <script src="public/js/todos/controllers.js"></script>
   <script src="public/js/todos/services.js"></script>
@@ -27,7 +26,7 @@
         <div class="list-item" ng-repeat="list in lists">
           <a href="" ng-click="setCurrentList(list.name)">{[{list.name}]}</a>
           {{!-- <button>Edit</button> --}}
-          {{!-- <button ng-click='delete(list)'>Delete</button> --}}
+          <button ng-click='delete(list)'>Delete</button>
         </div>      
       </div>
       <!-- Modal -->
