@@ -1,0 +1,10 @@
+<h1>{{user.name}}'s profiles</h1>
+<p>Username: {{user.username}}</p>
+<p>Password: {{user.password}}</p>
+<script type="text/javascript">
+  var actionString = "/users/:" + user.id
+</script>
+<form method="POST" action={{actionString}}>
+  <input name="_method" type="hidden" value="DELETE"></input>
+  <input type='submit' value="Delete"></input>
+</form>

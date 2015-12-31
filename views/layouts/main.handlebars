@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+  <title>Todos list</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/css/app.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="public/js/app.js"></script>
+  <script src="public/js/todos/controllers.js"></script>
+  <script src="public/js/todos/services.js"></script>
+  <script src="public/js/lists/controllers.js"></script>
+  <script src="public/js/lists/services.js"></script>
+ 
+</head>
+<body>
+  <div class="container-fluid">
+    <div id="leftMenu" class="col-md-3 col-sm-3 col-xs-3" ng-controller="ListController">
+      <div>        
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createListModal">Create list</button> 
+      </div>
+      <div id="lists" >
+        <div class="list-item" ng-repeat="list in lists">
+          <a href="" ng-click="setCurrentList(list.name)">{[{list.name}]}</a>
+          {{!-- <button>Edit</button> --}}
+          {{!-- <button ng-click='delete(list)'>Delete</button> --}}
+        </div>      
+      </div>
+      <!-- Modal -->
+      <div id="createListModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header" style="background: #5BC0DE">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Create list</h4>
+            </div>
+            <div class="modal-body">
+              List name
+              <input type='text' name='listName' ng-model="list.name" style="margin-bottom:10px"></input>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" ng-click="newList(list)" data-dismiss="modal">Submit</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="todoContent" class="col-md-9 col-sm-9 col-xs-9">
+      {{{body}}}
+    </div>
+  </div>
+</body>
+</html>
+

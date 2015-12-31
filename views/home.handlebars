@@ -1,0 +1,41 @@
+<div>      
+  <div class="header" ng-controller="ListController">
+    <h1 class="todo-header" ng-cloak>{[{currentList.name}]}</h1>
+    {{!-- <h3 class="time-show" ng-cloak>{[{time.now | date: "HH:mm:ss MMM-dd-yyyy"}]}</h3> --}}
+    <a class='btn btn-warning' href='/session/delete'>Sign out</a>
+  </div>    
+     
+  <div class="row" ng-controller="TodoController as todo" >
+    <div class="panel panel-info row todo-info new-todo">
+        <input ng-model="newTask" id="newTodo" type="text" ng-enter="todo.addTodo()" placeholder="Add a to-do..."></input>          
+    </div> 
+    <div><h5 style="color: blue; margin:20px;" ng-cloak>{[{(todoList| listFilter:currentList | filter:{done:'false'}).length}]} to-dos remaining...</h5></div>
+    <div ng-repeat="item in todoList | listFilter:currentList | filter:{done:'false'}">  
+      <div class="panel panel-info row todo-info" ng-dblclick="todo.setEditable(item)">
+      {{!-- ng-include="'partials/listOfItems.handlebars'"> --}}
+        <input type="checkbox" ng-model="item.done" ng-change="todo.update(item)"></input>
+        <label ng-hide="item.editable">{[{item.title}]}</label>
+        <input type="text" ng-model="item.title" ng-show="item.editable" ng-enter="todo.setEditable(item)" style="border: none;width: 80%"></input>
+
+        <button type="button" class="btn-info btn" ng-click="todo.removeTodo(item)">Delete</button>
+        <button type="button" class="btn-info btn" ng-click="todo.setEditable(item)" >Edit</button>
+      </div>  
+    </div>  
+
+    <button id="hideBtn" class="btn btn-warning" ng-model="hideButton" ng-click="todo.showHideCompleted()" ng-cloak>{[{hideButton}]}</button> 
+
+    <div ng-class="completedTodo" ng-show="todo.showCompleted" ng-repeat="item in todoList | listFilter:currentList | filter:{done:'true'}">          
+      <div class="panel panel-info row todo-info done-info" ng-dblclick="todo.setEditable(item)" ng-show="item.done" >
+      {{!-- ng-include="'partials/listOfItems.html'"> --}}
+      <input type="checkbox" ng-model="item.done" ng-change="todo.update(item)"></input>
+        <label ng-hide="item.editable">{[{item.title}]}</label>
+        <input type="text" ng-model="item.title" ng-show="item.editable" ng-enter="todo.setEditable(item)" style="border: none;width: 80%"></input>
+
+        <button type="button" class="btn-info btn" ng-click="todo.removeTodo(item)">Delete</button>
+        <button type="button" class="btn-info btn" ng-click="todo.setEditable(item)" >Edit</button>
+      </div>  
+    </div>  
+
+  </div>
+
+</div>
